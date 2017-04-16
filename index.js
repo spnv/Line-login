@@ -58,7 +58,7 @@ LINE_LOGIN_SPNV.prototype.signIn = function(_code, _state, _redirect, callback) 
 
     that.getToken(_code, _state, _redirect, function(data0) {
         that.getProfile(data0.access_token, function(data1) {
-            callback(data1.userId);
+            callback(data1);
         });
     });
 };
