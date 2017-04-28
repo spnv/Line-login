@@ -1,0 +1,22 @@
+{
+  "name": "line-login-spnv",
+  "version": "1.0.0",
+  "description": "nodejs package use to implement line login",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://supanatvee@bitbucket.org/supanatve/line-login-nodejs.git"
+  },
+  "keywords": [
+    "spnv"
+  ],
+  "author": "spnv",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/supanatve/line-login-nodejs#readme",
+  "dependencies": {
+    "request": "^2.81.0"
+  }
+}

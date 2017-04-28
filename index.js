@@ -14,10 +14,13 @@ var request = require('request');
 
 // public
 // constructor
-function LINE_LOGIN_SPNV(id, secret, name) {
-    this.channelId = id;
-    this.channelSecret = secret;
-    console.log(" LINE_LOGIN_SPNV Console : " + name + " start working ");
+function LINE_LOGIN_SPNV(_jsonData) {
+
+    this.name = _jsonData.name;
+    this.channelId = _jsonData.channelId;
+    this.channelSecret = _jsonData.channelSecret;
+
+    console.log(" LINE_LOGIN_SPNV Console : " + this.name + " start working ");
     /* Example =>
     var login = new lineLogin('1510166957', '643981886156292ce8d9e816b7677b56', 'login');
     */
@@ -62,5 +65,21 @@ LINE_LOGIN_SPNV.prototype.signIn = function(_code, _state, _redirect, callback) 
         });
     });
 };
+
+LINE_LOGIN_SPNV.prototype.isLogin = function(_res, _redirect, _state) {
+
+    var that = this;
+
+    return function(req, res, next) {
+        if (!req.cookies.userId) {
+            res.redirect('https://access.line.me/dialog/oauth/weblogin?response_type=' + _res +
+                '&client_id=' + that.channelId +
+                '&redirect_uri=' + _redirect +
+                '&state=' + _state);
+        } else {
+            next();
+        }
+    }
+}
 
 module.exports = LINE_LOGIN_SPNV;
