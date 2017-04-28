@@ -1,6 +1,6 @@
 {
   "name": "line-login-spnv",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "nodejs package use to implement line login",
   "main": "index.js",
   "scripts": {
