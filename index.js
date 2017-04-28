@@ -66,16 +66,16 @@ LINE_LOGIN_SPNV.prototype.signIn = function(_code, _state, _redirect, callback) 
     });
 };
 
-LINE_LOGIN_SPNV.prototype.isLogin = function(_res, _redirect, _state) {
+LINE_LOGIN_SPNV.prototype.isLogin = function(_jsonData) {
 
     var that = this;
 
     return function(req, res, next) {
         if (!req.cookies.userId) {
-            res.redirect('https://access.line.me/dialog/oauth/weblogin?response_type=' + _res +
+            res.redirect('https://access.line.me/dialog/oauth/weblogin?response_type=' + _jsonData.response_type +
                 '&client_id=' + that.channelId +
-                '&redirect_uri=' + _redirect +
-                '&state=' + _state);
+                '&redirect_uri=' + _jsonData.redirect_uri +
+                '&state=' + _jsonData.state);
         } else {
             next();
         }
